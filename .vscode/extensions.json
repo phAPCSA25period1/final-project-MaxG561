@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "vscjava.vscode-java-pack",     // Java language support, test runner, debugger
+    "github.copilot-chat",          // Chat (follows your copilot-instructions.md)
+    "github.vscode-pull-request-github"
+  ],
+  "unwantedRecommendations": [
+    // Keep the default Copilot extension out if you want Chat-only
+    "github.copilot"
+  ]
+}
