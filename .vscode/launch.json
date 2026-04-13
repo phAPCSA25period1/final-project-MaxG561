@@ -3,6 +3,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "symbolgenerator",
+      "request": "launch",
+      "mainClass": "symbolgenerator",
+      "projectName": "final-project-MaxG561_de0f75a0"
+    },
+    {
+      "type": "java",
       "name": "mainhub",
       "request": "launch",
       "mainClass": "mainhub",
