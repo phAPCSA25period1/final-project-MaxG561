@@ -19,6 +19,17 @@ public class twentyone {
         return new ArrayList<>(deck);
     }
 
+    public static int getCardValue(String pulledCard) {
+        String face = pulledCard.substring(0, pulledCard.indexOf(" of "));
+        if (face.equals("J") || face.equals("Q") || face.equals("K")) {
+            return 10;
+        } else if (face.equals("A")) {
+            return 11;
+        } else {
+            return Integer.parseInt(face);
+        }
+    }
+
 public static void main(String[] args) throws Exception {
         System.out.println("Deck created with " + getDeck().size() + " cards.");
         getDeck().forEach(System.out::println);
