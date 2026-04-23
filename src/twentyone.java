@@ -4,6 +4,8 @@ import java.util.Scanner;
 public class twentyone {
 
     private static ArrayList<String> deck = new ArrayList<>();
+    private ArrayList<String> playerHand;
+    private ArrayList<String> currentDeck;
 
     static {
         String[] suits = { "Hearts", "Diamonds", "Clubs", "Spades" };
@@ -30,6 +32,30 @@ public class twentyone {
         }
     }
 
+    public static void startGame() {
+        currentDeck = getDeck();
+        playerHand = new ArrayList<>();
+        System.out.println("Starting game...");
+        drawCard();
+        drawCard();
+        System.out.println("Total hand value: " + getHandValue());
+    }
+
+    public int getHandValue() {
+        int total = 0;
+        for (String card : playerHand) {
+            total += getCardValue(card);
+        }
+        return total;
+    }
+
+    private void drawCard() {
+        int randomIndex = (int) (Math.random() * currentDeck.size());
+        String card = currentDeck.remove(randomIndex);
+        playerHand.add(card);
+        System.out.println("Drew: " + card + " (Value: " + getCardValue(card) + ")");
+    }
+
 public static void main(String[] args) throws Exception {
         System.out.println("Deck created with " + getDeck().size() + " cards.");
         getDeck().forEach(System.out::println);
@@ -42,3 +68,4 @@ public static void main(String[] args) throws Exception {
 
     }
 }
+

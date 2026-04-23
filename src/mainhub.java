@@ -8,6 +8,6 @@ public class mainhub {
         twentyone.scannertest2();
         Scanner Scanner = new Scanner(System.in);
         System.out.println(Scanner.nextLine());
-
+        twentyone.startGame();
     }
 }
