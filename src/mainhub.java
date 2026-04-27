@@ -4,10 +4,13 @@ public class mainhub {
         System.out.println("Hello welcome to the minigame hub area please choose a game to play");
         System.out.println("1. symbol generator");
         System.out.println("2. 21");
-        symbolgenerator.scannertest();
-        twentyone.scannertest2();
         Scanner Scanner = new Scanner(System.in);
-        System.out.println(Scanner.nextLine());
-        twentyone.startGame();
+        int choice=Scanner.nextInt();
+        if (choice==2){
+        System.out.println(choice +"you chose 21");
+        twentyone game = new twentyone();
+        game.startGame();
+        game.hit();
+        }
     }
 }

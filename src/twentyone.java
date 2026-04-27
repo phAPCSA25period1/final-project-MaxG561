@@ -5,6 +5,7 @@ public class twentyone {
 
     private static ArrayList<String> deck = new ArrayList<>();
     private ArrayList<String> playerHand;
+    private ArrayList<String> DealerHand;
     private ArrayList<String> currentDeck;
 
     static {
@@ -32,31 +33,74 @@ public class twentyone {
         }
     }
 
-    public static void startGame() {
+    public void startGame() {
         currentDeck = getDeck();
         playerHand = new ArrayList<>();
+        DealerHand = new ArrayList<>();
         System.out.println("Starting game...");
-        drawCard();
-        drawCard();
-        System.out.println("Total hand value: " + getHandValue());
+        drawPlayerCard();
+        drawPlayerCard();
+        drawDealerCard();
+        drawDealerCard();
+        System.out.println("Total hand value: " + getPlayerHandValue());
+        System.out.println("Dealer Total hand value: " + getDealerHandValue());
     }
 
-    public int getHandValue() {
+    public int getPlayerHandValue() {
         int total = 0;
         for (String card : playerHand) {
             total += getCardValue(card);
         }
         return total;
     }
+    public int getDealerHandValue() {
+        int total = 0;
+        for (String card : DealerHand) {
+            total += getCardValue(card);
+        }
+        return total;
+    }
+    public void hit(){
+        int randomIndex = (int) (Math.random() * currentDeck.size());
+        String card = currentDeck.remove(randomIndex);
+        playerHand.add(card);
+        System.out.println("Drew: " + card + " (Value: " + getCardValue(card) + ")");
+         System.out.println("Total hand value: " + getPlayerHandValue());
+         System.out.println("Dealer Total hand value: " + getDealerHandValue());
+         if (getPlayerHandValue() > 21) {
+             System.out.println("Player busts!");
+         }
+         if (getDealerHandValue() > 21) {
+             System.out.println("Dealer busts!");
+         }
+    }
 
-    private void drawCard() {
+    public void dealerLogic(){
+        if (getDealerHandValue()<17){
+        while (getDealerHandValue()<17){
+            drawDealerCard();
+            System.out.println("Dealer Total hand value: " + getDealerHandValue());
+        }
+    }
+       else if (getDealerHandValue()>21){
+        System.out.println("Dealer Total hand value: " + getDealerHandValue());
+       }
+    }
+
+
+    private void drawPlayerCard() {
         int randomIndex = (int) (Math.random() * currentDeck.size());
         String card = currentDeck.remove(randomIndex);
         playerHand.add(card);
         System.out.println("Drew: " + card + " (Value: " + getCardValue(card) + ")");
     }
-
-public static void main(String[] args) throws Exception {
+private void drawDealerCard() {
+        int randomIndex = (int) (Math.random() * currentDeck.size());
+        String card = currentDeck.remove(randomIndex);
+        DealerHand.add(card);
+        System.out.println("Dealer Drew: " + card + " (Value: " + getCardValue(card) + ")");
+    }
+    public static void main(String[] args) throws Exception {
         System.out.println("Deck created with " + getDeck().size() + " cards.");
         getDeck().forEach(System.out::println);
     }
@@ -68,4 +112,3 @@ public static void main(String[] args) throws Exception {
 
     }
 }
-
