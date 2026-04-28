@@ -32,6 +32,12 @@ public class twentyone {
             return Integer.parseInt(face);
         }
     }
+public boolean isGameOver() {
+    return getPlayerHandValue() > 21 || getDealerHandValue() > 21 || gameOver;
+}
+
+private boolean gameOver = false;
+
 
     public void startGame() {
         currentDeck = getDeck();
@@ -75,28 +81,21 @@ public class twentyone {
          }
     }
 public void stand(){
-             if (getPlayerHandValue() > 21) {
-             System.out.println("Player busts!");
-         }
-         if (getDealerHandValue() > 21) {
-             System.out.println("Dealer busts!");
-         }
-         System.out.println("Total hand value: " + getPlayerHandValue());
-         System.out.println("Dealer Total hand value: " + getDealerHandValue());
-         dealerLogic();
-                     if (getPlayerHandValue() > 21) {
-             System.out.println("Player busts!");
-         }
-         if (getDealerHandValue() > 21) {
-             System.out.println("Dealer busts!");
-             if(getPlayerHandValue()>getDealerHandValue()){
-                System.out.println("PLAYER WIN!!!!");
-             }
-                else{
-                    System.out.println("DEALER WIN!!!!!");
-                }
-             }
-         }
+    dealerLogic();
+if (getPlayerHandValue() <= 21 && getDealerHandValue() <= 21) {
+    if (getPlayerHandValue() > getDealerHandValue()) {
+        System.out.println("PLAYER WINS!");
+    }
+     else if (getDealerHandValue() > getPlayerHandValue()) {
+        System.out.println("DEALER WINS!");
+    }
+    else {
+        System.out.println("PUSH! It's a tie.");
+
+    }
+     gameOver = true;
+}
+}
 
     public void dealerLogic(){
         if (getDealerHandValue()<17){

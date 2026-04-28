@@ -15,16 +15,20 @@ public class mainhub {
         twentyone game = new twentyone();
         game.startGame();
 
-        while (playing21=true){
-        System.out.println("would you to hit or stand");
-        String hitorstand=Scanner.nextLine();
-        if (hitorstand.equals("hit") ){
+        while (playing21) {
+    if (game.isGameOver()) {
+        playing21 = false;
+        break;
+    }
+    System.out.println("Would you like to hit or stand?");
+    String hitorstand = Scanner.nextLine();
+    if (hitorstand.equals("hit")) {
         game.hit();
-        }
-        if ((hitorstand.equals("stand"))){
+    } else if (hitorstand.equals("stand")) {
         game.stand();
     }
 }
+
         }
 
     }
