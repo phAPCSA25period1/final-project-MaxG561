@@ -74,6 +74,29 @@ public class twentyone {
              System.out.println("Dealer busts!");
          }
     }
+public void stand(){
+             if (getPlayerHandValue() > 21) {
+             System.out.println("Player busts!");
+         }
+         if (getDealerHandValue() > 21) {
+             System.out.println("Dealer busts!");
+         }
+         System.out.println("Total hand value: " + getPlayerHandValue());
+         System.out.println("Dealer Total hand value: " + getDealerHandValue());
+         dealerLogic();
+                     if (getPlayerHandValue() > 21) {
+             System.out.println("Player busts!");
+         }
+         if (getDealerHandValue() > 21) {
+             System.out.println("Dealer busts!");
+             if(getPlayerHandValue()>getDealerHandValue()){
+                System.out.println("PLAYER WIN!!!!");
+             }
+                else{
+                    System.out.println("DEALER WIN!!!!!");
+                }
+             }
+         }
 
     public void dealerLogic(){
         if (getDealerHandValue()<17){
