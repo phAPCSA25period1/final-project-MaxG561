@@ -75,9 +75,11 @@ private boolean gameOver = false;
          System.out.println("Dealer Total hand value: " + getDealerHandValue());
          if (getPlayerHandValue() > 21) {
              System.out.println("Player busts!");
+             gameOver = true;
          }
          if (getDealerHandValue() > 21) {
              System.out.println("Dealer busts!");
+             gameOver = true;
          }
     }
 public void stand(){
