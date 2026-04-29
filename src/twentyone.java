@@ -4,8 +4,8 @@ import java.util.Scanner;
 public class twentyone {
 
     private static ArrayList<String> deck = new ArrayList<>();
-    private ArrayList<String> playerHand;
-    private ArrayList<String> DealerHand;
+    private ArrayList<String> playerHand = new ArrayList<>();
+    private ArrayList<String> DealerHand = new ArrayList<>();
     private ArrayList<String> currentDeck;
 
     static {
@@ -22,7 +22,7 @@ public class twentyone {
         return new ArrayList<>(deck);
     }
 
-    public static int getCardValue(String pulledCard) {
+public static int getCardValue(String pulledCard) {
         String face = pulledCard.substring(0, pulledCard.indexOf(" of "));
         if (face.equals("J") || face.equals("Q") || face.equals("K")) {
             return 10;
@@ -32,6 +32,14 @@ public class twentyone {
             return Integer.parseInt(face);
         }
     }
+
+    public void resetGame() {
+        playerHand.clear();
+        DealerHand.clear();
+        currentDeck = getDeck();
+        gameOver = false;
+    }
+
 public boolean isGameOver() {
     return getPlayerHandValue() > 21 || getDealerHandValue() > 21 || gameOver;
 }
@@ -74,29 +82,31 @@ private boolean gameOver = false;
          System.out.println("Total hand value: " + getPlayerHandValue());
          System.out.println("Dealer Total hand value: " + getDealerHandValue());
          if (getPlayerHandValue() > 21) {
-             System.out.println("Player busts!");
+             System.out.println("Player busted with " + getPlayerHandValue() + "!");
              gameOver = true;
-         }
-         if (getDealerHandValue() > 21) {
-             System.out.println("Dealer busts!");
-             gameOver = true;
+             return;
          }
     }
 public void stand(){
+    if (getPlayerHandValue() > 21) {
+        System.out.println("Dealer wins! Player busted.");
+        gameOver = true;
+        return;
+    }
     dealerLogic();
-if (getPlayerHandValue() <= 21 && getDealerHandValue() <= 21) {
-    if (getPlayerHandValue() > getDealerHandValue()) {
-        System.out.println("PLAYER WINS!");
+    // Determine winner
+    if (getPlayerHandValue() > 21) {
+        System.out.println("Dealer wins! Player busted.");
+    } else if (getDealerHandValue() > 21) {
+        System.out.println("Player wins! Dealer busted.");
+    } else if (getPlayerHandValue() > getDealerHandValue()) {
+        System.out.println("Player wins!");
+    } else if (getDealerHandValue() > getPlayerHandValue()) {
+        System.out.println("Dealer wins!");
+    } else {
+        System.out.println("Push! It's a tie.");
     }
-     else if (getDealerHandValue() > getPlayerHandValue()) {
-        System.out.println("DEALER WINS!");
-    }
-    else {
-        System.out.println("PUSH! It's a tie.");
-
-    }
-     gameOver = true;
-}
+    gameOver = true;
 }
 
     public void dealerLogic(){
@@ -104,6 +114,11 @@ if (getPlayerHandValue() <= 21 && getDealerHandValue() <= 21) {
         while (getDealerHandValue()<17){
             drawDealerCard();
             System.out.println("Dealer Total hand value: " + getDealerHandValue());
+        }
+        System.out.println("Dealer final total: " + getDealerHandValue());
+        if (getDealerHandValue() > 21) {
+            System.out.println("Dealer busted with " + getDealerHandValue() + "!");
+            gameOver = true;
         }
     }
        else if (getDealerHandValue()>21){

@@ -1,10 +1,8 @@
-# TwentyOne Card Scoring Implementation TODO
+# TODO: Fix NullPointerException in twentyone.resetGame()
 
 ## Steps:
-1. [x] Add `getCardValue(String pulledCard)` method to convert card string to int score (A=11, K/Q/J=10, 2-10=face).
-2. [ ] Replace `scannertest2()` with basic game loop: shuffle deck, player/dealer hands, hit/stand, score check, bust/win.
-3. [ ] Compile and test via mainhub.
-4. [ ] Handle aces better (11 or 1 if bust), full dealer logic (optional next).
-
-Updated as steps complete.
+- [x] Step 1: Edit src/twentyone.java to initialize playerHand and DealerHand as empty ArrayList<>().
+- [ ] Step 2: Compile all Java files with `javac src/*.java`.
+- [ ] Step 3: Test by running `java -cp src mainhub` and verify no NPE on resetGame().
+- [ ] Step 4: Mark complete and attempt_completion.
 
