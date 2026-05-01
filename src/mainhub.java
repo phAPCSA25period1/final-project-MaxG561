@@ -10,10 +10,11 @@ public class mainhub {
         int choice = Scanner.nextInt();
         Scanner.nextLine(); // Consume newline after nextInt to fix double prompt
 
-        if (choice == 2) {
+if (choice == 2) {
             boolean playAgainLoop = true;
             twentyone game = new twentyone();
             while (playAgainLoop) {
+                game.placeBet(Scanner);
                 game.resetGame();
                 game.startGame();
                 boolean gameActive = true;
