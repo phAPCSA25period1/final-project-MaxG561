@@ -12,7 +12,7 @@ public class twentyone {
 
     // Method to calculate reward dynamically
     public int getReward() {
-        return bet * 2;
+        return bet;
     }
 
     // Method to place a bet
@@ -132,11 +132,11 @@ public class twentyone {
             System.out.println("You lost " + bet + "! Your new balance is " + balance);
         } else if (getDealerHandValue() > 21) {
             System.out.println("Player wins! Dealer busted.");
-            balance += bet * 2;
+            balance += bet ;
             System.out.println("You won " + bet + "! Your new balance is " + balance);
         } else if (getPlayerHandValue() > getDealerHandValue()) {
             System.out.println("Player wins!");
-            balance += bet * 2;
+            balance += bet;
             System.out.println("You won " + bet + "! Your new balance is " + balance);
         } else if (getDealerHandValue() > getPlayerHandValue()) {
             System.out.println("Dealer wins!");

@@ -3,14 +3,13 @@ import java.util.Scanner;
 public class mainhub {
     public static void main(String[] args) throws Exception {
         System.out.println("Hello welcome to the minigame hub area please choose a game to play");
-        System.out.println("1. symbol generator");
-        System.out.println("2. 21");
+        System.out.println("1. 21");
 
         Scanner Scanner = new Scanner(System.in);
         int choice = Scanner.nextInt();
         Scanner.nextLine(); // Consume newline after nextInt to fix double prompt
 
-if (choice == 2) {
+if (choice == 1) {
             boolean playAgainLoop = true;
             twentyone game = new twentyone();
             while (playAgainLoop) {
